@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Validar arquivos
+        run: |
+          echo "Validando projeto..."
+          test -f index.html
+          test -f style.css
+          echo "Validação concluída com sucesso!"
